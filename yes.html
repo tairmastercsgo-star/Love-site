@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>❤️ Для моей любимой ❤️</title>
 
 <style>
@@ -13,46 +11,164 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,Helvetica,sans-serif;
+font-family:Arial,sans-serif;
 }
 
 body{
-
 height:100vh;
-overflow:hidden;
 display:flex;
 justify-content:center;
 align-items:center;
-
-background:linear-gradient(135deg,#ffd7e8,#ffc3df,#ffeef7);
-
+background:linear-gradient(135deg,#ffb6d9,#ffd6ea,#fff0f7);
 background-size:300% 300%;
-
-animation:bg 10s ease infinite;
-
+animation:bg 8s ease infinite;
+overflow:hidden;
 }
 
 @keyframes bg{
-
 0%{background-position:0% 50%;}
 50%{background-position:100% 50%;}
 100%{background-position:0% 50%;}
-
 }
 
 .card{
-
-width:92%;
-max-width:390px;
-
-padding:28px;
-
+width:90%;
+max-width:380px;
+padding:25px;
+background:rgba(255,255,255,.35);
+backdrop-filter:blur(18px);
+border-radius:25px;
 text-align:center;
+box-shadow:0 15px 40px rgba(255,105,180,.25);
+}
 
-background:rgba(255,255,255,.30);
+h1{
+color:#ff3f87;
+margin-bottom:15px;
+font-size:30px;
+}
 
-backdrop-filter:blur(18px)
-  for(let i=0;i<70;i++){
+p{
+font-size:20px;
+color:#555;
+line-height:1.5;
+margin-bottom:20px;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-bottom:20px;
+}
+
+.gallery img{
+width:100%;
+border-radius:15px;
+}
+
+.gallery img:last-child{
+grid-column:1/3;
+width:70%;
+margin:auto;
+}
+
+button{
+background:#ff4f95;
+color:white;
+border:none;
+padding:15px 30px;
+font-size:20px;
+border-radius:15px;
+font-weight:bold;
+}
+
+#final{
+display:none;
+margin-top:20px;
+font-size:26px;
+color:#ff2f7f;
+font-weight:bold;
+}
+
+.heart{
+position:fixed;
+top:-40px;
+font-size:22px;
+pointer-events:none;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh);
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>❤️ Я тоже тебя очень сильно люблю ❤️</h1>
+
+<p>
+Спасибо, что появилась в моей жизни.<br>
+Я очень счастлив, что ты у меня есть 💕
+</p>
+
+<div class="gallery">
+
+<img src="1.png">
+<img src="2.png">
+<img src="3.png">
+
+</div>
+
+<button onclick="love()">
+💌 Обнять тебя
+</button>
+
+<div id="final">
+Навсегда вместе ❤️
+</div>
+
+<script>
+  function love(){
+
+document.getElementById("final").style.display="block";
+
+for(let i=0;i<120;i++){
+
+let heart=document.createElement("div");
+
+heart.innerHTML="❤️";
+
+heart.style.position="fixed";
+heart.style.left=Math.random()*100+"vw";
+heart.style.top=Math.random()*100+"vh";
+heart.style.fontSize=(18+Math.random()*22)+"px";
+heart.style.pointerEvents="none";
+heart.style.transition="all .8s ease";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.style.transform="translateY(-100px) scale(1.5)";
+heart.style.opacity="0";
+},50);
+
+setTimeout(()=>{
+heart.remove();
+},1000);
+
+}
+
+}
+
+for(let i=0;i<45;i++){
 
 let h=document.createElement("div");
 
@@ -69,44 +185,9 @@ h.style.animationDelay=Math.random()*5+"s";
 document.body.appendChild(h);
 
 }
-
-function love(){
-
-document.getElementById("final").style.display="block";
-
-for(let i=0;i<180;i++){
-
-let heart=document.createElement("div");
-
-heart.innerHTML="❤️";
-
-heart.style.position="fixed";
-
-heart.style.left=Math.random()*100+"vw";
-
-heart.style.top=Math.random()*100+"vh";
-
-heart.style.fontSize=(18+Math.random()*24)+"px";
-
-heart.style.pointerEvents="none";
-
-heart.style.transition="all .8s ease";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>{
-heart.style.transform="translateY(-80px) scale(1.5)";
-heart.style.opacity="0";
-},50);
-
-setTimeout(()=>{
-heart.remove();
-},1000);
-
-}
-
-  }
   </script>
 
+</div>
+
 </body>
-</html>
+</html> 
