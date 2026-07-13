@@ -1,26 +1,26 @@
 const yes = document.getElementById("yes");
 const no = document.getElementById("no");
-const text = document.getElementById("text");
+const text = document.getElementById("question");
 const music = document.getElementById("music");
 
 const phrases = [
-"Точно? 🥺",
-"Подумай ещё ❤️",
-"Ну пожалуйста 🙏",
-"Я всё равно люблю тебя 💕",
-"Нажми «Да» 😘",
-"Не получится 🤭",
-"ты знаешь правильный ответ ❤️"
+"Ты точно уверена? 🥺",
+"Подумай ещё 💕",
+"Нееет 😭",
+"Я всё равно тебя люблю ❤️",
+"Ну пожалуйста 🥹",
+"Правильный ответ — Да 😘",
+"Попробуй ещё 🤭"
 ];
 
-let count = 0;
-let musicStarted = false;
-let yesSize = 1;
+let tries = 0;
+let yesScale = 1;
+let started = false;
 
 function startMusic(){
-    if(!musicStarted){
+    if(!started){
         music.play().catch(()=>{});
-        musicStarted = true;
+        started = true;
     }
 }
 
@@ -28,49 +28,60 @@ function moveButton(){
 
     startMusic();
 
-    count++;
+    tries++;
 
-    text.innerHTML = phrases[count % phrases.length];
+    text.textContent = phrases[tries % phrases.length];
 
-    yesSize += 0.15;
-    yes.style.transform = `scale(${yesSize})`;
+    yesScale += 0.08;
+    yes.style.transform = `scale(${yesScale})`;
 
-    const x = Math.random() * (window.innerWidth - 120);
-    const y = Math.random() * (window.innerHeight - 80);
+    const padding = 20;
 
+    const maxX = window.innerWidth - no.offsetWidth - padding;
+    const maxY = window.innerHeight - no.offsetHeight - padding;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    no.style.position = "fixed";
     no.style.left = x + "px";
     no.style.top = y + "px";
+    no.style.transition = "left .25s ease, top .25s ease";
 }
 
-no.onclick = moveButton;
-no.onmouseover = moveButton;
-no.ontouchstart = moveButton;
+no.addEventListener("click", moveButton);
+no.addEventListener("mouseenter", moveButton);
+no.addEventListener("touchstart", function(e){
+    e.preventDefault();
+    moveButton();
+});
 
-yes.onclick = () => {
+yes.addEventListener("click", ()=>{
+
     startMusic();
 
-    document.body.style.opacity = "0";
+    document.body.style.transition="opacity .6s";
+    document.body.style.opacity="0";
 
     setTimeout(()=>{
         location.href="yes.html";
-    },700);
-};
+    },600);
 
-document.body.style.transition="1s";
+});
 
-for(let i=0;i<40;i++){
+for(let i=0;i<35;i++){
 
-    let heart=document.createElement("div");
+    const heart=document.createElement("div");
 
     heart.className="heart";
 
-    heart.innerHTML="❤️";
+    heart.innerHTML="💖";
 
     heart.style.left=Math.random()*100+"vw";
 
-    heart.style.animationDuration=(3+Math.random()*4)+"s";
+    heart.style.animationDuration=(6+Math.random()*6)+"s";
 
-    heart.style.animationDelay=Math.random()*5+"s";
+    heart.style.animationDelay=Math.random()*6+"s";
 
     document.body.appendChild(heart);
 
