@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>❤️ Люблю тебя ❤️</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(-45deg,#ffb6d9,#ffd6ea,#ffeef7,#ffc7df);
+background-size:400% 400%;
+animation:bg 10s ease infinite;
+}
+
+@keyframes bg{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.box{
+text-align:center;
+background:rgba(255,255,255,.35);
+backdrop-filter:blur(15px);
+padding:30px;
+border-radius:30px;
+width:90%;
+max-width:420px;
+box-shadow:0 0 30px rgba(255,105,180,.4);
+z-index:5;
+}
+
+h1{
+color:#ff2d75;
+font-size:36px;
+margin-bottom:15px;
+}
+
+p{
+font-size:22px;
+margin-bottom:20px;
+color:#444;
+}
+
+.images{
+display:flex;
+justify-content:center;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.images img{
+width:110px;
+border-radius:18px;
+animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+50%{
+transform:translateY(-10px);
+}
+}
+
+.heart{
+position:absolute;
+font-size:26px;
+animation:fall linear infinite;
+pointer-events:none;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-100px);
+opacity:1;
+}
+100%{
+transform:translateY(110vh);
+opacity:0;
+}
+}
+
+button{
+margin-top:25px;
+padding:15px 30px;
+border:none;
+border-radius:20px;
+font-size:22px;
+background:#ff4d88;
+color:white;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h1>Я тоже тебя очень сильно люблю ❤️</h1>
+
+<p>
+Спасибо, что ты есть в моей жизни. 💖
+</p>
+
+<div class="images">
+<img src="1.png">
+<img src="2.png">
+<img src="3.png">
+</div>
+
+<button onclick="love()">
+💌 Нажми ещё
+</button>
+
+</div>
+
+<script>
+
+for(let i=0;i<80;i++){
+
+let h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML="❤️";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.animationDuration=(3+Math.random()*5)+"s";
+
+h.style.animationDelay=Math.random()*5+"s";
+
+document.body.appendChild(h);
+
+}
+
+function love(){
+
+for(let i=0;i<200;i++){
+
+let h=document.createElement("div");
+
+h.innerHTML="💖";
+
+h.style.position="absolute";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.top=Math.random()*100+"vh";
+
+h.style.fontSize=(20+Math.random()*30)+"px";
+
+document.body.appendChild(h);
+
+}
+
+alert("❤️ Люблю тебя бесконечно ❤️");
+
+}
+
+</script>
+
+</body>
+</html>
