@@ -51,4 +51,62 @@ text-align:center;
 
 background:rgba(255,255,255,.30);
 
-backdrop-filter:blur(18px 
+backdrop-filter:blur(18px)
+  for(let i=0;i<70;i++){
+
+let h=document.createElement("div");
+
+h.className="heart";
+
+h.innerHTML="💖";
+
+h.style.left=Math.random()*100+"vw";
+
+h.style.animationDuration=(5+Math.random()*5)+"s";
+
+h.style.animationDelay=Math.random()*5+"s";
+
+document.body.appendChild(h);
+
+}
+
+function love(){
+
+document.getElementById("final").style.display="block";
+
+for(let i=0;i<180;i++){
+
+let heart=document.createElement("div");
+
+heart.innerHTML="❤️";
+
+heart.style.position="fixed";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.top=Math.random()*100+"vh";
+
+heart.style.fontSize=(18+Math.random()*24)+"px";
+
+heart.style.pointerEvents="none";
+
+heart.style.transition="all .8s ease";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.style.transform="translateY(-80px) scale(1.5)";
+heart.style.opacity="0";
+},50);
+
+setTimeout(()=>{
+heart.remove();
+},1000);
+
+}
+
+  }
+  </script>
+
+</body>
+</html>
